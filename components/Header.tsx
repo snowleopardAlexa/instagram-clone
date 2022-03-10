@@ -5,7 +5,7 @@ import { HomeIcon } from "@heroicons/react/solid";
 
 const Header = () => {
   return (
-    <div> 
+    <div className="shadow-sm"> 
       <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
         <div className="relative hidden lg:inline-grid w-24">
         <Image 
@@ -39,7 +39,11 @@ const Header = () => {
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon className="navBtn" />
           <MenuIcon className="h-6 md:hidden cursor-pointer" />
-          <PaperAirplaneIcon className="navBtn" />
+          <div className="relative navBtn">
+           <PaperAirplaneIcon className="navBtn rotate-45" />
+           <div className="absolute -top-1 -right-2 text-xs w-5 h-5 bg-red-500 
+           rounded-full flex items-center justify-center animate-pulse text-white">7</div>
+          </div>
           <PlusCircleIcon className="navBtn" />
           <UserGroupIcon className="navBtn" />
           <HeartIcon className="navBtn" />
