@@ -1,8 +1,14 @@
-
+import Image from "next/image";
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <div>
+        <Image 
+          src="/instagram-logo.png"
+          alt="logo"
+          layout="fill"
+        />
+    </div>
   )
 }
 
