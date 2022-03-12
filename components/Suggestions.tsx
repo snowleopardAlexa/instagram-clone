@@ -1,8 +1,6 @@
-
-
 const Suggestions = () => {
   return (
-    <div>Suggestions</div>
+    <div></div>
   )
 }
 

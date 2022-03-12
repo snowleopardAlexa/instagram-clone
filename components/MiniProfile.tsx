@@ -10,11 +10,11 @@ const MiniProfile = () => {
           width="50px"
           height="50px"
         />
-        <div>
-            <h2>alexaalexa</h2>
-            <h3>Welcome to Instagram</h3>
+        <div className="flex-1 mx-4">
+            <h2 className="font-bold">alexaalexa</h2>
+            <h3 className="text-sm text-gray-400">Welcome to Instagram</h3>
         </div>
-        <button>Sign out</button>
+        <button className="text-blue-400 text-sm font-semibold">Sign out</button>
     </div>
   )
 }
