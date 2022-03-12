@@ -1,23 +1,7 @@
-import { onSnapshot } from "firebase/firestore"
+import { onSnapshot, query, collection, orderBy } from "firebase/firestore"
+import { db } from "../firebase"
 import { useState, useEffect } from "react"
 import Post from "./Post"
-
-const posts = [
-    {
-        id: '123',
-        username: 'alexaalexa',
-        userImg: '/alexa.jpeg',
-        img: '',
-        caption: 'A beautiful lion resting on the rock'
-    },
-    {
-        id: '123',
-        username: 'alexaalexa',
-        userImg: '/alexa.jpeg',
-        img: '',
-        caption: 'A beautiful lion resting on the rock'
-    },
-]
 
 const Posts = () => {
 
@@ -30,9 +14,11 @@ const Posts = () => {
          (snapshot) => {
           setPosts(snapshot.docs)
         }
-      )
+      ),
    [db]
   )
+
+  console.log(posts)
 
   return (
     <div>
@@ -42,7 +28,7 @@ const Posts = () => {
          id={post.id}
          username={post.data().username}
          userImg={post.data().profileImg}
-         img={post.data().img}
+         img={post.data().image}
          caption={post.data().caption}
          />
       ))}

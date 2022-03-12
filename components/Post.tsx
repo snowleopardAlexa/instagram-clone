@@ -6,11 +6,10 @@ import {
     HeartIcon,
     PaperAirplaneIcon,
 } from "@heroicons/react/outline";
-import Image from "next/image";
 
 const Post = ({ id, username, userImg, img, caption }) => {
   return (
-    <div className="bg-white my-7 border rounded-sm">
+    <div key={id} className="bg-white my-7 border rounded-sm">
         <div className="flex items-center p-5">
             <img 
               src={userImg} 
@@ -19,12 +18,12 @@ const Post = ({ id, username, userImg, img, caption }) => {
             <p className="flex-1 font-bold">{username}</p>
             <DotsHorizontalIcon className="h-5" />
         </div>
-        <Image 
-          src="/lion.jpg" 
+        <img 
+          src={img}
           className="object-cover w-full" 
           alt="post-image" 
-          width="800px"
-          height="500px"
+          width="200px"
+          height="200px"
         />
         <div className="flex justify-between px-4 pt-4">
         <div className="flex space-x-4">
