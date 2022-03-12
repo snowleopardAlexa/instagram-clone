@@ -5,7 +5,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useRef, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { db, storage } from "../firebase"
-import { addDoc, collection, serverTimestamp } from "@firebase/firestore"
+import { addDoc, updateDoc, doc, collection, serverTimestamp } from "@firebase/firestore"
 import { ref, getDownloadURL, uploadString } from '@firebase/storage'
 
 
