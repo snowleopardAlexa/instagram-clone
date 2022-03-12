@@ -7,7 +7,7 @@ import {
     HeartIcon,
     PaperAirplaneIcon,
 } from "@heroicons/react/outline";
-import { addDoc, collection, orderBy, query, onSnapshot, serverTimestamp, doc, setDoc } from "firebase/firestore"
+import { addDoc, deleteDoc, collection, orderBy, query, onSnapshot, serverTimestamp, doc, setDoc } from "firebase/firestore"
 import { db } from "../firebase"
 import { useSession } from "next-auth/react"
 import Moment from "react-moment"
@@ -58,17 +58,23 @@ useEffect(
 )
 
 // has like or not
-useEffect(() => {
-  setHasLiked(
-    likes.findIndex((like) => (like.id === session?.user?.uid) !== -1)
-  )
-}, [likes])
+useEffect(
+  () => 
+    setHasLiked(
+      likes.findIndex((like) => like.id === session?.user?.uid) !== -1
+    ),
+    [likes]
+)
 
 // like function
 const likePost = async() => {
-  await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
+  if (hasLiked) {
+    await deleteDoc(doc(db, "posts", id, "likes", session.user.uid))
+  } else {
+    await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
     username: session.user.username,
   })
+ }
 }
 
   return (
