@@ -3,8 +3,14 @@ import { modalState } from '../atoms/modalAtom'
 import { CameraIcon } from '@heroicons/react/solid'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useRef, useState } from 'react'
+import { useSession } from 'next-auth/react'
+import { db, storage } from "../firebase"
+import { addDoc, collection, serverTimestamp } from "@firebase/firestore"
+import { ref, getDownloadURL, uploadString } from '@firebase/storage'
+
 
 const Modal = () => {
+  const { data: session } = useSession()
   const [open, setOpen] = useRecoilState(modalState)
   const filePickerRef = useRef(null)
   const captionRef = useRef(null);
@@ -28,6 +34,34 @@ const Modal = () => {
      if(loading) return
 
      setLoading(true)
+
+     // 1. Create a post and add it to firestore
+     // 2. Get the post ID for the newly created post
+     // 3. Upload the image to firebase storage with the post ID
+     // 4. Get a download URL to firebase storage and update the original post with image
+
+     const docRef = await addDoc(collection(db, 'posts'), {
+         username: session.user.username,
+         caption: captionRef.current.value,
+         profileImg: session.user.image,
+         timestamp: serverTimestamp()
+     })
+
+     console.log("New doc added with ID", docRef.id);
+
+     const imageRef = ref(storage, `posts/${docRef.id}/image`)
+
+     await uploadString(imageRef, selectedFile, "data_url").then(async snapshot => {
+        const downloadURL = await getDownloadURL(imageRef)
+
+        await updateDoc(doc(db, 'posts', docRef.id), {
+            image: downloadURL
+        })
+     })
+
+     setOpen(false);
+     setLoading(false);
+     setSelectedFile(null);
   }
 
   return (
@@ -117,11 +151,13 @@ const Modal = () => {
                 </div>
                 <div className="mt-5 sm:mt-6">
                   <button
+                    onClick={uploadPost}
+                    disabled={!selectedFile}
                     type="button"
                     className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 
-                  px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none
-                  focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300
-                  hover:disabled:bg-gray-300 sm:text-sm"
+                    px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none
+                    focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300
+                    hover:disabled:bg-gray-300 sm:text-sm"
                   >
                     Upload Post
                   </button>
