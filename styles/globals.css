@@ -9,6 +9,6 @@
     }
 
     .imgD {
-        @apply rounded-full cursor-pointer;
+        @apply rounded-full cursor-pointer h-10;
     }
 }
