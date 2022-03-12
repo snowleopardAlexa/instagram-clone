@@ -9,6 +9,10 @@
     }
 
     .imgD {
-        @apply rounded-full cursor-pointer h-10;
+        @apply rounded-full h-12 w-12 object-contain border p-1 cursor-pointer;
+    }
+
+    .btn {
+        @apply h-7 hover:scale-125 cursor-pointer transition-all duration-150 ease-out;
     }
 }
