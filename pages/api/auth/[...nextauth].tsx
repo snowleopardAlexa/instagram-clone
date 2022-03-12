@@ -12,8 +12,7 @@ export default NextAuth ({
     ],
 
     // theme for a login screen
-    theme: {
-        brandColor: "#F13287",
-        colorScheme: "auto",
+    pages: {
+        signIn: "/auth/signin",
     }
 })
