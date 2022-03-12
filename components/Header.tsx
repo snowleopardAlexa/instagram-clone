@@ -6,10 +6,14 @@ import {
   HeartIcon,
   PaperAirplaneIcon,
   MenuIcon,
-} from '@heroicons/react/outline'
+} from '@heroicons/react/outline';
 import { HomeIcon } from '@heroicons/react/solid';
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Header = () => {
+
+  const { data: session } = useSession()
+
   return (
     <div className="sticky top-0 z-50 border-b bg-white shadow-sm">
       <div className="mx-5 flex max-w-6xl justify-between lg:mx-auto">
@@ -45,25 +49,35 @@ const Header = () => {
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon className="navBtn" />
           <MenuIcon className="h-6 cursor-pointer md:hidden" />
-          <div className="navBtn relative">
-            <PaperAirplaneIcon className="navBtn rotate-45" />
-            <div
-              className="absolute -top-1 -right-2 flex h-5 w-5 animate-pulse 
-           items-center justify-center rounded-full bg-red-500 text-xs text-white"
-            >
-              7
+
+          {session ? (
+            <>
+              <div className="navBtn relative">
+              <PaperAirplaneIcon className="navBtn rotate-45" />
+              <div
+                className="absolute -top-1 -right-2 flex h-5 w-5 animate-pulse 
+             items-center justify-center rounded-full bg-red-500 text-xs text-white"
+              >
+                7
+              </div>
             </div>
-          </div>
-          <PlusCircleIcon className="navBtn" />
-          <UserGroupIcon className="navBtn" />
-          <HeartIcon className="navBtn" />
-          <Image
-            className="imgD"
-            src="/alexa.jpeg"
-            alt="profile photo"
-            width="40px"
-            height="40px"
-          />
+            <PlusCircleIcon className="navBtn" />
+            <UserGroupIcon className="navBtn" />
+            <HeartIcon className="navBtn" />
+  
+            <img
+              onClick={signOut}
+              className="imgD"
+              src={session.user.image}
+              alt="profile photo"
+              width="40px"
+              height="40px"
+            />
+            </>
+          ) : (
+           <button onClick={signIn}>Sign In</button>
+          )}
+        
         </div>
       </div>
     </div>
