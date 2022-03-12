@@ -18,6 +18,7 @@ const { data: session } = useSession()
 const [comment, setComment] = useState("")
 const [comments, setComments] = useState([])
 const [likes, setLikes] = useState([])
+const [hasLiked, setHasLiked] = useState(false)
 
 // comments - implicit destructuring 
 useEffect(
@@ -32,21 +33,7 @@ useEffect(
   [db]
 )
 
-// likes 
-useEffect(
-  () => 
-    onSnapshot(collection(db, "posts", id, "likes"), (snapshot) => 
-       setLikes(snapshot.docs)
-    ),
-    [db, id]
-)
-
-const likePost = async() => {
-  await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
-    username: session.user.username,
-  })
-}
-
+// comment function 
 const sendComment = async(e) => {
   e.preventDefault();
 
@@ -58,6 +45,29 @@ const sendComment = async(e) => {
     username: session.user.username,
     userImage: session.user.image,
     timestamp: serverTimestamp(),
+  })
+}
+
+// likes 
+useEffect(
+  () => 
+    onSnapshot(collection(db, "posts", id, "likes"), (snapshot) => 
+       setLikes(snapshot.docs)
+    ),
+    [db, id]
+)
+
+// has like or not
+useEffect(() => {
+  setHasLiked(
+    likes.findIndex((like) => (like.id === session?.user?.uid) !== -1)
+  )
+}, [likes])
+
+// like function
+const likePost = async() => {
+  await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
+    username: session.user.username,
   })
 }
 
