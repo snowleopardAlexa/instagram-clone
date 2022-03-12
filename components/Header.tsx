@@ -70,8 +70,6 @@ const Header = () => {
               className="imgD"
               src={session.user.image}
               alt="profile photo"
-              width="40px"
-              height="40px"
             />
             </>
           ) : (
