@@ -7,7 +7,7 @@ const Feed = () => {
       xl:grid-cols-3 xl:max-w-6xl max-auto">
         <section className="col-span-2">
            <Stories />
-           <Post />
+           <Posts />
         </section>
         <section>
             
