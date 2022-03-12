@@ -4,21 +4,21 @@ const posts = [
     {
         id: '123',
         username: 'alexaalexa',
-        userImg: '',
+        userImg: '/alexa.jpeg',
         img: '',
         caption: 'subscribe'
     },
     {
         id: '123',
         username: 'alexaalexa',
-        userImg: '',
+        userImg: '/alexa.jpeg',
         img: '',
         caption: 'subscribe'
     },
     {
         id: '123',
         username: 'alexaalexa',
-        userImg: '',
+        userImg: '/alexa.jpeg',
         img: '',
         caption: 'subscribe'
     },
