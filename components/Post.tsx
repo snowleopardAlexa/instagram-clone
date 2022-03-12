@@ -7,6 +7,7 @@ import {
     HeartIcon,
     PaperAirplaneIcon,
 } from "@heroicons/react/outline";
+import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid"
 import { addDoc, deleteDoc, collection, orderBy, query, onSnapshot, serverTimestamp, doc, setDoc } from "firebase/firestore"
 import { db } from "../firebase"
 import { useSession } from "next-auth/react"
@@ -95,19 +96,32 @@ const likePost = async() => {
         {session && (
           <div className="flex justify-between px-4 pt-4">
           <div className="flex space-x-4">
+              {hasLiked ? (
+              <HeartIconFilled onClick={likePost} className="btn text-red-600" />
+              ) : (
               <HeartIcon onClick={likePost} className="btn" />
+              )}
               <ChatIcon className="btn" />
               <PaperAirplaneIcon className="btn" />
           </div>
               <BookmarkIcon className="btn" />
           </div>
         )}
+
+        {/* caption */}
+        <p className="p-5 truncate">
+          {likes.length > 0 && (
+            <p className="font-bold">{likes.length} likes</p>
+          )}
+
+        </p>
         
         <p className="p-5 truncate">
           <span className="font-bold mr-1">{username}</span>
           {caption}
         </p>
 
+        {/* comments */}
         {comments.length > 0 && (
           <div className="ml-10 h-20 overflow-y-scroll 
           scrollbar-thumb-black scrollbar-thin"> 
