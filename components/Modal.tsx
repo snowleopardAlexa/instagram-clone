@@ -159,7 +159,7 @@ const Modal = () => {
                     focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300
                     hover:disabled:bg-gray-300 sm:text-sm"
                   >
-                    Upload Post
+                    {loading ? "Uploading..." : "Upload Post"}
                   </button>
                 </div>
               </div>
