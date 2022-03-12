@@ -8,9 +8,10 @@ const Modal = () => {
   const [open, setOpen] = useRecoilState(modalState)
   const filePickerRef = useRef(null)
   const captionRef = useRef(null);
+  const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null)
 
-  // function add image to post
+  // function upload image to post
   const addImageToPost = (e) => {
     const reader = new FileReader()
     if (e.target.files[0]) {
@@ -20,6 +21,13 @@ const Modal = () => {
     reader.onload = (readerEvent) => {
         setSelectedFile(readerEvent.target.result);
     }
+  }
+
+  // function post a post to firebase 
+  const uploadPost = async() => {
+     if(loading) return
+
+     setLoading(true)
   }
 
   return (
