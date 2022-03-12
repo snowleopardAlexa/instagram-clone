@@ -9,5 +9,11 @@ export default NextAuth ({
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         })
         // add more providers here
-    ]
+    ],
+
+    // theme for a login screen
+    theme: {
+        brandColor: "#F13287",
+        colorScheme: "auto",
+    }
 })
