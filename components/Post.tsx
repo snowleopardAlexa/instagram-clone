@@ -10,6 +10,7 @@ import {
 import { addDoc, collection, orderBy, query, onSnapshot, serverTimestamp } from "firebase/firestore"
 import { db } from "../firebase"
 import { useSession } from "next-auth/react"
+import Moment from "react-moment"
 
 const Post = ({ id, username, userImg, img, caption }) => {
 
@@ -88,9 +89,12 @@ const sendComment = async(e) => {
                  <p className="text-sm flex-1">
                    <span className="font-bold">
                    {comment.data().username}
-                   </span>
+                   </span>{" "}
                    {comment.data().comment}
                  </p>
+                 <Moment fromNow className="pr-5 text-xs">
+                   {comment.data().timestamp?.toDate()}
+                 </Moment>
               </div>
             ))}
            </div>  
