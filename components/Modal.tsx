@@ -52,6 +52,23 @@ const Modal = () => {
                >
                  Upload a photo   
                </Dialog.Title>
+               <div>
+                  <input 
+                   // ref={filePickerRef}
+                   type="file"
+                   hidden
+                   // onChange={addImageToPost}
+                  />
+               </div>
+               <div className="mt-2">
+                   <input 
+                     className="border-none focus:ring-0 w-full text-center"
+                     type="text"
+                     // ref={captionRef}
+                     placeholder="Please enter a caption..."
+                   />
+
+               </div>
             </div>
             <div className="mt-5 sm:mt-6">
                 <button
