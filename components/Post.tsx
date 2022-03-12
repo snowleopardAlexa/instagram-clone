@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import {
     BookmarkIcon,
     ChatIcon,
@@ -6,7 +7,7 @@ import {
     HeartIcon,
     PaperAirplaneIcon,
 } from "@heroicons/react/outline";
-import { addDoc, serverTimestamp } from "firebase/firestore"
+import { addDoc, collection, orderBy, query, onSnapshot, serverTimestamp } from "firebase/firestore"
 import { db } from "../firebase"
 import { useSession } from "next-auth/react"
 
@@ -15,6 +16,19 @@ const Post = ({ id, username, userImg, img, caption }) => {
 const { data: session } = useSession()
 const [comment, setComment] = useState("")
 const [comments, setComments] = useState([])
+
+// implicit destructuring 
+useEffect(
+  () => 
+  onSnapshot(
+    query(
+      collection(db, "posts", id, "comments"),
+      orderBy("timestamp", "desc")
+    ),
+    (snapshot) => setComments(snapshot.docs)
+  ),
+  [db]
+)
 
 const sendComment = async(e) => {
   e.preventDefault();
@@ -60,6 +74,27 @@ const sendComment = async(e) => {
           <span className="font-bold mr-1">{username}</span>
           {caption}
         </p>
+
+        {comments.length > 0 && (
+          <div className="ml-10 h-20 overflow-y-scroll 
+          scrollbar-thumb-black scrollbar-thin"> 
+            {comments.map((comment) => (
+              <div key={comment.id} className="flex items-center space-x-2 mb-3">
+                 <img 
+                   className="h-7 rounded-full"
+                   src={comment.data().userImage} 
+                   alt="profile-photo" 
+                 />
+                 <p className="text-sm flex-1">
+                   <span className="font-bold">
+                   {comment.data().username}
+                   </span>
+                   {comment.data().comment}
+                 </p>
+              </div>
+            ))}
+           </div>  
+        )}
 
         {session && (
            <form className="flex items-center p-4">
