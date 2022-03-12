@@ -9,7 +9,7 @@
     }
 
     .imgD {
-        @apply rounded-full h-12 w-12 object-contain border p-1 cursor-pointer;
+        @apply rounded-full h-10 w-10 object-contain border p-1 cursor-pointer;
     }
 
     .btn {

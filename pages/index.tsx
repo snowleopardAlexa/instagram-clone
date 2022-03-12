@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from "../components/Header";
 import Feed from "../components/Feed";
+import Modal from "../components/Modal";
 
 const Home = () => {
   return (
@@ -8,8 +9,11 @@ const Home = () => {
       <Head>
         <title>Instagram Clone</title>
       </Head>
+       <Modal />
        <Header />
        <Feed />
+      
+
     </div>
   )
 }
