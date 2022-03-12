@@ -32,7 +32,15 @@ useEffect(() => {
              src={profile.avatar}
              alt="profile-avatar"
             /> 
-          </div>
+            <div className="flex-1 ml-4">
+              <h2 className="font-semibold text-sm">
+                {profile.username}
+                <h3 className="text-xs text-gray-400">Works at {profile.company.name}</h3>
+              </h2>
+            </div>
+            <button className="text-blue-4 text-xs font-bold">Follow</button>
+
+            </div>
         ))}
       
     </div>
