@@ -6,21 +6,21 @@ const posts = [
         username: 'alexaalexa',
         userImg: '/alexa.jpeg',
         img: '',
-        caption: 'subscribe'
+        caption: 'A beautiful lion resting on the rock'
     },
     {
         id: '123',
         username: 'alexaalexa',
         userImg: '/alexa.jpeg',
         img: '',
-        caption: 'subscribe'
+        caption: 'A beautiful lion resting on the rock'
     },
     {
         id: '123',
         username: 'alexaalexa',
         userImg: '/alexa.jpeg',
         img: '',
-        caption: 'subscribe'
+        caption: 'A beautiful lion resting on the rock'
     },
 ]
 
