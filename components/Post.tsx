@@ -6,11 +6,29 @@ import {
     HeartIcon,
     PaperAirplaneIcon,
 } from "@heroicons/react/outline";
+import { addDoc, serverTimestamp } from "firebase/firestore"
+import { db } from "../firebase"
 import { useSession } from "next-auth/react"
 
 const Post = ({ id, username, userImg, img, caption }) => {
 
 const { data: session } = useSession()
+const [comment, setComment] = useState("")
+const [comments, setComments] = useState([])
+
+const sendComment = async(e) => {
+  e.preventDefault();
+
+  const commentToSend = comment;
+  setComment('');
+
+  await addDoc(collection(db, "posts", id, "comments"), {
+    comment: commentToSend,
+    username: session.user.username,
+    userImage: session.user.image,
+    timestamp: serverTimestamp(),
+  })
+}
 
   return (
     <div key={id} className="bg-white my-7 border rounded-sm">
@@ -48,10 +66,19 @@ const { data: session } = useSession()
            <EmojiHappyIcon className="h-7" />
            <input 
              type="text" 
+             value={comment}
+             onChange={e => setComment(e.target.value)}
              placeholder="Add a comment..."
              className="border-none flex-1 focus:ring-0" 
            />
-           <button className="font-semibold text-blue-400">Post</button>
+           <button 
+             type="submit" 
+             disabled={!comment.trim()} 
+             onClick={sendComment}
+             className="font-semibold text-blue-400"
+            >
+             Post
+          </button>
          </form>
         )}
     </div>
