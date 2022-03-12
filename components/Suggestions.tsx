@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import faker from "@faker-js/faker";
+import Image from "next/image";
 
 const Suggestions = () => {
 
@@ -20,6 +21,20 @@ useEffect(() => {
         <h3 className="text-sm font-bold text-gray-400">Suggestions for you</h3>
         <button className="text-gray-600 font-semibold">See All</button>
       </div>
+      
+        {suggestions.map(profile => (
+          <div
+            key={profile.id}
+            className="flex items-center justify-between mt-3"
+          >
+           <img
+             className="w-10 h-10 rounded-full border p-[2px]"
+             src={profile.avatar}
+             alt="profile-avatar"
+            /> 
+          </div>
+        ))}
+      
     </div>
   )
 }

@@ -7,8 +7,8 @@ const MiniProfile = () => {
           className="rounded-full border p-[2px]"
           src="/alexa.jpeg"
           alt="profile photo"
-          width="50px"
-          height="50px"
+          width="60px"
+          height="60px"
         />
         <div className="flex-1 mx-4">
             <h2 className="font-bold">alexaalexa</h2>
