@@ -7,7 +7,7 @@ import {
     HeartIcon,
     PaperAirplaneIcon,
 } from "@heroicons/react/outline";
-import { addDoc, collection, orderBy, query, onSnapshot, serverTimestamp } from "firebase/firestore"
+import { addDoc, collection, orderBy, query, onSnapshot, serverTimestamp, doc, setDoc } from "firebase/firestore"
 import { db } from "../firebase"
 import { useSession } from "next-auth/react"
 import Moment from "react-moment"
@@ -17,8 +17,9 @@ const Post = ({ id, username, userImg, img, caption }) => {
 const { data: session } = useSession()
 const [comment, setComment] = useState("")
 const [comments, setComments] = useState([])
+const [likes, setLikes] = useState([])
 
-// implicit destructuring 
+// comments - implicit destructuring 
 useEffect(
   () => 
   onSnapshot(
@@ -30,6 +31,21 @@ useEffect(
   ),
   [db]
 )
+
+// likes 
+useEffect(
+  () => 
+    onSnapshot(collection(db, "posts", id, "likes"), (snapshot) => 
+       setLikes(snapshot.docs)
+    ),
+    [db, id]
+)
+
+const likePost = async() => {
+  await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
+    username: session.user.username,
+  })
+}
 
 const sendComment = async(e) => {
   e.preventDefault();
@@ -63,7 +79,7 @@ const sendComment = async(e) => {
         {session && (
           <div className="flex justify-between px-4 pt-4">
           <div className="flex space-x-4">
-              <HeartIcon className="btn" />
+              <HeartIcon onClick={likePost} className="btn" />
               <ChatIcon className="btn" />
               <PaperAirplaneIcon className="btn" />
           </div>
