@@ -9,15 +9,17 @@ import {
 } from '@heroicons/react/outline';
 import { HomeIcon } from '@heroicons/react/solid';
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Header = () => {
 
   const { data: session } = useSession()
+  const router = useRouter()
 
   return (
     <div className="sticky top-0 z-50 border-b bg-white shadow-sm">
       <div className="mx-5 flex max-w-6xl justify-between lg:mx-auto">
-        <div className="relative hidden w-24 lg:inline-grid">
+        <div onClick={() => router.push('/')} className="relative hidden w-24 lg:inline-grid">
           <Image
             src="/instagram-text-logo.png"
             alt="logo"
@@ -25,7 +27,7 @@ const Header = () => {
             objectFit="contain"
           />
         </div>
-        <div className="relative w-10 flex-shrink-0 lg:hidden">
+        <div onClick={() => router.push('/')} className="relative w-10 flex-shrink-0 lg:hidden">
           <Image
             src="/instagram-logo.png"
             alt="logo"
@@ -47,7 +49,7 @@ const Header = () => {
           </div>
         </div>
         <div className="flex items-center justify-end space-x-4">
-          <HomeIcon className="navBtn" />
+          <HomeIcon onClick={() => router.push('/')} className="navBtn" />
           <MenuIcon className="h-6 cursor-pointer md:hidden" />
 
           {session ? (
