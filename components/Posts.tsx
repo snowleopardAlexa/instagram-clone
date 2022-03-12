@@ -23,13 +23,16 @@ const Posts = () => {
 
   const [posts, setPosts] = useState([])
 
-  useEffect(() => {
-     const unsubscribe = onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), snapshot => {
-        setPosts(snapshot.docs);
-     })
-
-     return unsubscribe
-  }, [])
+  useEffect(
+    () => 
+      onSnapshot(
+        query(collection(db, 'posts'), orderBy('timestamp', 'desc')), 
+         (snapshot) => {
+          setPosts(snapshot.docs)
+        }
+      )
+   [db]
+  )
 
   return (
     <div>
