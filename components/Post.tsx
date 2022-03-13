@@ -7,7 +7,8 @@ import {
     HeartIcon,
     PaperAirplaneIcon,
 } from "@heroicons/react/outline";
-import { addDoc, collection, orderBy, query, onSnapshot, serverTimestamp } from "firebase/firestore"
+import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid"
+import { addDoc, deleteDoc, collection, orderBy, query, onSnapshot, serverTimestamp, doc, setDoc } from "firebase/firestore"
 import { db } from "../firebase"
 import { useSession } from "next-auth/react"
 import Moment from "react-moment"
@@ -17,8 +18,10 @@ const Post = ({ id, username, userImg, img, caption }) => {
 const { data: session } = useSession()
 const [comment, setComment] = useState("")
 const [comments, setComments] = useState([])
+const [likes, setLikes] = useState([])
+const [hasLiked, setHasLiked] = useState(false)
 
-// implicit destructuring 
+// comments - implicit destructuring 
 useEffect(
   () => 
   onSnapshot(
@@ -31,6 +34,7 @@ useEffect(
   [db]
 )
 
+// comment function 
 const sendComment = async(e) => {
   e.preventDefault();
 
@@ -43,6 +47,35 @@ const sendComment = async(e) => {
     userImage: session.user.image,
     timestamp: serverTimestamp(),
   })
+}
+
+// likes 
+useEffect(
+  () => 
+    onSnapshot(collection(db, "posts", id, "likes"), (snapshot) => 
+       setLikes(snapshot.docs)
+    ),
+    [db, id]
+)
+
+// has like or not
+useEffect(
+  () => 
+    setHasLiked(
+      likes.findIndex((like) => like.id === session?.user?.uid) !== -1
+    ),
+    [likes]
+)
+
+// like function
+const likePost = async() => {
+  if (hasLiked) {
+    await deleteDoc(doc(db, "posts", id, "likes", session.user.uid))
+  } else {
+    await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
+    username: session.user.username,
+  })
+ }
 }
 
   return (
@@ -63,19 +96,32 @@ const sendComment = async(e) => {
         {session && (
           <div className="flex justify-between px-4 pt-4">
           <div className="flex space-x-4">
-              <HeartIcon className="btn" />
+              {hasLiked ? (
+              <HeartIconFilled onClick={likePost} className="btn text-red-600" />
+              ) : (
+              <HeartIcon onClick={likePost} className="btn" />
+              )}
               <ChatIcon className="btn" />
               <PaperAirplaneIcon className="btn" />
           </div>
               <BookmarkIcon className="btn" />
           </div>
         )}
+
+        {/* caption */}
+        <p className="p-5 truncate">
+          {likes.length > 0 && (
+            <p className="font-bold">{likes.length} likes</p>
+          )}
+
+        </p>
         
         <p className="p-5 truncate">
           <span className="font-bold mr-1">{username}</span>
           {caption}
         </p>
 
+        {/* comments */}
         {comments.length > 0 && (
           <div className="ml-10 h-20 overflow-y-scroll 
           scrollbar-thumb-black scrollbar-thin"> 
