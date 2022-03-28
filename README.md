@@ -13,14 +13,14 @@
   <p align="center">
     This is a Instagram Clone that represents basic functionality - login in to the app with Gmail account, add a post with the option to upload a photo, comment on the post, like or unlike the post. 
     <br />
-    <a href="https://github.com/snowleopardAlexa/medium-clone"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/snowleopardAlexa/instagram-clone"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://linkedin-clone-5ef14.web.app">View Demo</a>
+    <a href="https://instagram-clone-5ef14.web.app">View Demo</a>
     ·
-    <a href="https://github.com/github_snowleopardAlexa/linkedin-clone/issues">Report Bug</a>
+    <a href="https://github.com/github_snowleopardAlexa/instagram-clone/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_snowleopardAlexa/linkedin-clone/issues">Request Feature</a>
+    <a href="https://github.com/github_snowleopardAlexa/instagram-clone/issues">Request Feature</a>
   </p>
 </div>
 
@@ -39,8 +39,7 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-           <li><a href="#dependencies">Dependencies</a></li>
+        <li><a href="#dependencies">Dependencies</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -77,14 +76,6 @@
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
 ### Dependencies
 
 * react: "^17.0.2",
@@ -110,7 +101,7 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    npm install
    ```
-3. Create local .env file and enter your API key there.
+3. Create the account with Firebase, create local .env file and enter your Firebase API key there.
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```
