@@ -11,7 +11,7 @@
 <h3 align="center">Instagram Clone</h3>
 
   <p align="center">
-    This is a Instagram Clone that represents basic functionality - login in to the app with Gmail account, add a post with the option to upload a photo, comment on the post. 
+    This is a Instagram Clone that represents basic functionality - login in to the app with Gmail account, add a post with the option to upload a photo, comment on the post, like or unlike the post. 
     <br />
     <a href="https://github.com/snowleopardAlexa/medium-clone"><strong>Explore the docs »</strong></a>
     <br />
@@ -61,8 +61,9 @@
 ### Built With
 
 * [React.js](https://reactjs.org/)
-* [Redux.js](https://reduxjs.org/)
-* [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+* [Next.js](https://nextjs.org/)
+* [TailwindCSS](https://tailwindcss.com/)
+* [Recoil](https://recoiljs.org/)
 * [Firebase](https://firebase.google.com)
 
 
@@ -105,7 +106,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-This project had been built for educational purposes only and it can't be used. The goal of a project is to show how to achieve similar functionality to that of a real instagram. This project is good for students who are interested in learning how to create posts on the client side and how to save and delete them on the server side with the usage of React.js, Next.js and Firebase. The user can comment the posts, login in and logout of its account. The project has enabled Firebase gmail login. The project is not fully responsive. Use your desktop to view it. 
+This project had been built for educational purposes only and it can't be used. The goal of a project is to show how to achieve similar functionality to that of a real instagram. This project is good for students who are interested in learning how to create posts on the client side and how to save and delete them on the server side with the usage of React.js, Next.js, Firebase and Recoil as the library to manage the state within the app. The user can comment the posts, login in and logout of its account. The project has enabled Firebase gmail login. The project is not fully responsive. Use your desktop to view it. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
