@@ -40,6 +40,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
+           <li><a href="#dependencies">Dependencies</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -65,6 +66,7 @@
 * [TailwindCSS](https://tailwindcss.com/)
 * [Recoil](https://recoiljs.org/)
 * [Firebase](https://firebase.google.com)
+* [Faker.js](https://www.npmjs.com/package/@faker-js/faker)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -82,6 +84,21 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   npm install npm@latest -g
   ```
+
+### Dependencies
+
+* react: "^17.0.2",
+* @headlessui/react: "^1.5.0",
+* @heroicons/react: "^1.0.6",
+* @tailwindcss/forms: "^0.5.0",
+* faker: "^6.6.6",
+* firebase: "^9.6.8",
+* next: "latest",
+* next-auth: "4.0.0-beta.7",
+* react-moment: "^1.1.1",
+* recoil: "^0.6.1",
+* tailwind-scrollbar-hide: "^1.1.7"
+
 
 ### Installation
 
@@ -105,7 +122,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-This project had been built for educational purposes only and it can't be used. The goal of a project is to show how to achieve similar functionality to that of a real instagram. This project is good for students who are interested in learning how to create posts on the client side and how to save and delete them on the server side with the usage of React.js, Next.js, Firebase and Recoil as the library to manage the state within the app. The user can comment the posts, login in and logout of its account. The project has enabled Firebase gmail login. The project is not fully responsive. Use your desktop to view it. 
+This project had been built for educational purposes only and it can't be used. The goal of a project is to show how to achieve similar functionality to that of a real instagram. This project is good for students who are interested in learning how to create posts on the client side and how to save and delete them on the server side with the usage of React.js, Next.js, Firebase and Recoil as the library to manage the state within the app. The user can comment the posts, login in and logout of its account. The project has enabled Firebase gmail login. Faker.js had been used to fetch random data in the projects - profile images of the people. The project is not fully responsive. Use your desktop to view it. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -121,6 +138,7 @@ This project had been built for educational purposes only and it can't be used. 
 - Building Right Section of Header 
 - Implementing Sticky Header
 - Building Feed Component
+- Implementing Faker.js
 - Building Stories Section of the Feed
 - Building Posts Component
 - Building Header Section of the Posts
