@@ -39,8 +39,8 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#dependencies">Dependencies</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#dependencies">Dependencies</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -76,21 +76,6 @@
 
 To get a local copy up and running follow these simple example steps.
 
-### Dependencies
-
-* react: "^17.0.2",
-* @headlessui/react: "^1.5.0",
-* @heroicons/react: "^1.0.6",
-* @tailwindcss/forms: "^0.5.0",
-* faker: "^6.6.6",
-* firebase: "^9.6.8",
-* next: "latest",
-* next-auth: "4.0.0-beta.7",
-* react-moment: "^1.1.1",
-* recoil: "^0.6.1",
-* tailwind-scrollbar-hide: "^1.1.7"
-
-
 ### Installation
 
 1. Clone the repo
@@ -108,7 +93,19 @@ To get a local copy up and running follow these simple example steps.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Dependencies
 
+* react: "^17.0.2",
+* @headlessui/react: "^1.5.0",
+* @heroicons/react: "^1.0.6",
+* @tailwindcss/forms: "^0.5.0",
+* faker: "^6.6.6",
+* firebase: "^9.6.8",
+* next: "latest",
+* next-auth: "4.0.0-beta.7",
+* react-moment: "^1.1.1",
+* recoil: "^0.6.1",
+* tailwind-scrollbar-hide: "^1.1.7"
 
 <!-- USAGE EXAMPLES -->
 ## Usage
