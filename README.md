@@ -18,9 +18,9 @@
     <br />
     <a href="https://instagram-clone-5ef14.web.app">View Demo</a>
     ·
-    <a href="https://github.com/github_snowleopardAlexa/instagram-clone/issues">Report Bug</a>
+    <a href="https://github.com/snowleopardAlexa/instagram-clone/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_snowleopardAlexa/instagram-clone/issues">Request Feature</a>
+    <a href="https://github.com/snowleopardAlexa/instagram-clone/issues">Request Feature</a>
   </p>
 </div>
 
