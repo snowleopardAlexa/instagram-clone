@@ -11,7 +11,7 @@
 <h3 align="center">Instagram Clone</h3>
 
   <p align="center">
-    This is a Instagram Clone that represents basic functionality - 
+    This is a Instagram Clone that represents basic functionality - login in to the app with Gmail account, add a post with the option to upload a photo, comment on the post. 
     <br />
     <a href="https://github.com/snowleopardAlexa/medium-clone"><strong>Explore the docs »</strong></a>
     <br />
@@ -54,7 +54,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## Medium-Clone
+## Instagram-Clone
 
 ![Alt text](/public/instagram-clone.png?raw=true "Instagram Clone")(https://instagram-clone-snowleopardalexa.vercel.app/)
 
