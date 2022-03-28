@@ -56,7 +56,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Instagram-Clone
 
-![Alt text](/public/instagram-clone.png?raw=true "Instagram Clone")(https://instagram-clone-snowleopardalexa.vercel.app/)
+![Alt text](/public/instagram-clone.png?raw=true "Instagram Clone") https://instagram-clone-snowleopardalexa.vercel.app/
 
 ### Built With
 
@@ -85,16 +85,15 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Register to Sanity.io and get a free API Key at [Key](https://www.sanity.io/)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/github_username/repo_name.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Create local .env file and enter your API key there.
+3. Create local .env file and enter your API key there.
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```
